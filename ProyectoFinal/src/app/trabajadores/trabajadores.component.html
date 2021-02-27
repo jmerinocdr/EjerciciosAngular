@@ -1,0 +1,46 @@
+<p>Trabajadores</p>
+<p>{{today}}</p>
+<p>{{anoActual}}</p>
+<p>{{anoTrabajador}}</p>
+<div>
+    <p>Buscador <input type="text" name="search" [(ngModel)]="search"></p>
+</div>
+<div *ngIf="trabajadores!=null; else espera">
+    <table border="1" *ngIf="search==null||search==none">
+        <tr>
+            <td>Name</td><td>Surname</td><td>DNI</td><td>_</td><td>_</td>
+        </tr>
+        <tr *ngFor="let trabajador of trabajadores">
+            <td>{{trabajador.name}}</td>
+            <td>{{trabajador.surname}}</td>
+            <td>{{trabajador.dni}}</td>
+            <td>{{trabajador.fechaContrato}}</td>
+            <td>{{trabajador.mesesTrabajados}}</td>
+            <td><button (click)="setData(trabajador)">✔</button></td>
+            <td><button (click)="deleteTrabajador(trabajador)">X</button></td>
+        </tr>
+    </table>
+    <table border="1" *ngIf="search!=null&&search!=none">
+        <tr>
+            <td>Name</td><td>Surname</td><td>DNI</td><td></td><td></td>
+        </tr>
+            <tr *ngFor="let trabajador of trabajadores">
+                <td *ngIf="trabajador.name==search||startWith(trabajador.name, search)">{{trabajador.name}}</td>
+                <td *ngIf="trabajador.name==search||startWith(trabajador.name, search)">{{trabajador.surname}}</td>
+                <td *ngIf="trabajador.name==search||startWith(trabajador.name, search)">{{trabajador.dni}}</td>
+                <td *ngIf="trabajador.name==search||startWith(trabajador.name, search)">{{trabajador.mesesTrabajados}}</td>
+                <td><button (click)="setData(trabajador)">✔</button></td>
+                <td><button (click)="deleteTrabajador(trabajador)">X</button></td>
+            </tr>
+    </table>
+</div>
+<ng-template #espera>Esperando datos...</ng-template>
+<form>
+    <input type="hidden" name="id" [(ngModel)]="id" value="{{id}}">
+    <p>Name <input type="text" name="name" [(ngModel)]="name" value="{{name}}"></p>
+    <p>Surname <input type="text" name="surname" [(ngModel)]="surname" value="{{surname}}"></p>
+    <p>DNI <input type="text" name="dni" [(ngModel)]="dni" value="{{dni}}"></p>
+    <p>Fecha Contrato <input type="date" name="fechaContrato" [(ngModel)]="fechaContrato" value="{{fechaContrato}}"></p>
+    <button *ngIf="add" (click)="addTrabajador(id, name, surname, dni, fechaContrato)">Anadir Trabajador</button>
+    <button *ngIf="selected" (click)="modTrabajador(id, name, surname, dni, fechaContrato)">Modificar Trabajador</button>
+</form>

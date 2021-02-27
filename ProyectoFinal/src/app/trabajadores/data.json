@@ -1,0 +1,26 @@
+[
+    {
+        "id":"1",
+        "name":"Nombre",
+        "surname":"Apellido",
+        "dni":"123456789",
+        "fechaContrato":"10/10/2010",
+        "mesesTrabajados":"1"
+    },
+    {
+        "id":"2",
+        "name":"Nombre",
+        "surname":"Apellido",
+        "dni":"123456789",
+        "fechaContrato":"10/10/2010",
+        "mesesTrabajados":"1"
+    },
+    {
+        "id":"3",
+        "name":"Nombre",
+        "surname":"Apellido",
+        "dni":"123456789",
+        "fechaContrato":"10/10/2010",
+        "mesesTrabajados":"1"
+    }
+]
