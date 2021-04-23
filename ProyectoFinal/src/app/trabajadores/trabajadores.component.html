@@ -1,23 +1,21 @@
 <p>Trabajadores</p>
-<p>{{today}}</p>
-<p>{{anoActual}}</p>
-<p>{{anoTrabajador}}</p>
 <div>
     <p>Buscador <input type="text" name="search" [(ngModel)]="search"></p>
 </div>
 <div *ngIf="trabajadores!=null; else espera">
     <table border="1" *ngIf="search==null||search==none">
         <tr>
-            <td>Name</td><td>Surname</td><td>DNI</td><td>_</td><td>_</td>
+            <td>Name</td><td>Surname</td><td>DNI</td><td>Contract date</td><td>Days</td>
         </tr>
         <tr *ngFor="let trabajador of trabajadores">
             <td>{{trabajador.name}}</td>
             <td>{{trabajador.surname}}</td>
             <td>{{trabajador.dni}}</td>
             <td>{{trabajador.fechaContrato}}</td>
-            <td>{{trabajador.mesesTrabajados}}</td>
+            <td>{{trabajador.diasVacaciones}}</td>
             <td><button (click)="setData(trabajador)">✔</button></td>
             <td><button (click)="deleteTrabajador(trabajador)">X</button></td>
+            <td><input type="text" name="meses" [(ngModel)]="meses" value="0" size="4" /><button (click)="takeMonths(trabajador)">-</button></td>
         </tr>
     </table>
     <table border="1" *ngIf="search!=null&&search!=none">
@@ -31,6 +29,7 @@
                 <td *ngIf="trabajador.name==search||startWith(trabajador.name, search)">{{trabajador.mesesTrabajados}}</td>
                 <td><button (click)="setData(trabajador)">✔</button></td>
                 <td><button (click)="deleteTrabajador(trabajador)">X</button></td>
+                <td><input type="text" name="meses" [(ngModel)]="meses" value="0" size="4"/><button (click)="takeMonths(trabajador)">-</button></td>
             </tr>
     </table>
 </div>
@@ -41,6 +40,7 @@
     <p>Surname <input type="text" name="surname" [(ngModel)]="surname" value="{{surname}}"></p>
     <p>DNI <input type="text" name="dni" [(ngModel)]="dni" value="{{dni}}"></p>
     <p>Fecha Contrato <input type="date" name="fechaContrato" [(ngModel)]="fechaContrato" value="{{fechaContrato}}"></p>
-    <button *ngIf="add" (click)="addTrabajador(id, name, surname, dni, fechaContrato)">Anadir Trabajador</button>
+    <input type="hidden" name="mesesTrabajados" value="0">
+    <button *ngIf="add" (click)="addTrabajador(id, name, surname, dni, fechaContrato, mesesTrabajados)">Anadir Trabajador</button>
     <button *ngIf="selected" (click)="modTrabajador(id, name, surname, dni, fechaContrato)">Modificar Trabajador</button>
 </form>

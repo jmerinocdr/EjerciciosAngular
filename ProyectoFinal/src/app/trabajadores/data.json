@@ -4,7 +4,7 @@
         "name":"Nombre",
         "surname":"Apellido",
         "dni":"123456789",
-        "fechaContrato":"10/10/2010",
+        "fechaContrato":"2010-10-10",
         "mesesTrabajados":"1"
     },
     {
@@ -12,15 +12,15 @@
         "name":"Nombre",
         "surname":"Apellido",
         "dni":"123456789",
-        "fechaContrato":"10/10/2010",
-        "mesesTrabajados":"1"
+        "fechaContrato":"2011-11-20",
+        "mesesTrabajados":"2"
     },
     {
         "id":"3",
         "name":"Nombre",
         "surname":"Apellido",
         "dni":"123456789",
-        "fechaContrato":"10/10/2010",
-        "mesesTrabajados":"1"
+        "fechaContrato":"2012-12-30",
+        "mesesTrabajados":"3"
     }
 ]

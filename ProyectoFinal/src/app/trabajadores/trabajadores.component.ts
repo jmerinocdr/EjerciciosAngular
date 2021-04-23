@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import data from './data.json';
-import { findLast } from '@angular/compiler/src/directive_resolver';
 
 @Component({
   selector: 'app-trabajadores',
@@ -18,10 +15,11 @@ export class TrabajadoresComponent implements OnInit {
   surname: String | undefined;
   dni: String | undefined;
   mesesTrabajados: number | undefined;
+  diasVacaciones: number | undefined;
+
 
   today = new Date();
   fechaContrato = new Date();
-
   
 
   find: boolean=false;
@@ -33,46 +31,64 @@ export class TrabajadoresComponent implements OnInit {
 
   trabajadores: any = data;
   contadorIds: number=this.trabajadores.length + 1;
+  diaActual: number | undefined;
+  mesActual: number | undefined;
   anoActual: number | undefined;
   anoTrabajador: number | undefined;
 
+  meses: number | undefined;
 
-  constructor() {}
+
+  constructor(public datePipe: DatePipe) {}
 
   ngOnInit(): void {
+    this.diaActual=this.today.getDate();
+    this.mesActual=this.today.getMonth();
+    this.anoActual=this.today.getFullYear();
     for(let i=0; i<this.trabajadores.length; i++){
-      this.fechaContrato=this.trabajadores[i].fechaContrato;
-      this.trabajadores[i].mesesTrabajados=this.updateMeses();
+      this.trabajadores[i].mesesTrabajados = this.updateMeses(this.trabajadores[i]);
+      this.trabajadores[i].diasVacaciones = this.updateDiasVacaciones(this.trabajadores[i]);
     }
-    this.setAno();
  }
 
-  setAno(){
-    this.anoActual = this.today.getFullYear();
-    this.anoTrabajador = this.fechaContrato.getFullYear();
-  }
-
- updateMeses(){
-  this.mesesTrabajados = this.monthDiff(this.fechaContrato, this.today);
+ updateMeses(trabajador:any){
+  return this.monthDiff(trabajador.fechaContrato, this.today);
  }
- monthDiff(d1: any, d2: any) {
+ updateDiasVacaciones(trabajador:any){
+  return Math.floor(this.monthDiff(trabajador.fechaContrato, this.today)*2.5);
+ }
+ monthDiff(d1t: Date, d2t: Date) {
+let d1 = new Date(d1t);
+let d2 = new Date(d2t);
+
   var months;
   months = (d2.getFullYear() - d1.getFullYear()) * 12;
   months -= d1.getMonth();
   months += d2.getMonth();
-  return months <= 0 ? 0 : months;
+  //return months <= 0 ? 0 : months; 
+  return Math.floor(months);
+  
+ /*
+  return Math.floor((Date.UTC(
+    d2.getFullYear(), 
+    d2.getMonth(), 
+    d2.getDate()) - Date.UTC(d1.getFullYear(), 
+    d1.getMonth(), 
+    d1.getDate()) ) /(1000 * 60 * 60 * 24));
+    */
 }
 
- addTrabajador(id: any, name: any, surname: any, dni: any, fechaContrato: any){
+ addTrabajador(id: any, name: any, surname: any, dni: any, fechaContrato: any, mesesTrabajados: any){
+   mesesTrabajados = this.monthDiff(fechaContrato, this.today);
    var trabajador = {
      id: this.contadorIds,
      name: name,
      surname: surname,
      dni: dni,
-     fechaContrato: fechaContrato
+     fechaContrato: fechaContrato, 
+     mesesTrabajados:mesesTrabajados
    }
   this.trabajadores.push(trabajador);
-  this.mesesTrabajados=this.monthDiff(fechaContrato, this.today);
  }
  setData(trabajador: any){
    this.id=trabajador.id;
@@ -113,5 +129,9 @@ startWith(nombre: String, search: String){
     }
   }
   return this.find;
+}
+
+takeMonths(trabajador: String){
+
 }
 }
