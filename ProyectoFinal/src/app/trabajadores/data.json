@@ -1,24 +1,24 @@
 [
     {
         "id":"1",
-        "name":"Nombre",
-        "surname":"Apellido",
+        "name":"Nombre1",
+        "surname":"Apellido3",
         "dni":"123456789",
         "fechaContrato":"2010-10-10",
         "mesesTrabajados":"1"
     },
     {
         "id":"2",
-        "name":"Nombre",
-        "surname":"Apellido",
+        "name":"Nombre2",
+        "surname":"Apellido2",
         "dni":"123456789",
         "fechaContrato":"2011-11-20",
         "mesesTrabajados":"2"
     },
     {
         "id":"3",
-        "name":"Nombre",
-        "surname":"Apellido",
+        "name":"Nombre3",
+        "surname":"Apellido1",
         "dni":"123456789",
         "fechaContrato":"2012-12-30",
         "mesesTrabajados":"3"

@@ -1,0 +1,54 @@
+html, body{
+    background-color:#d9fcff ;
+}
+.title{
+    text-align: center;
+    font-size: 2em;
+}
+.searchbar{
+    width: 100%;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    background-color: #9dacc9;
+    align-content: center;
+    text-align: center;
+}
+.search{
+    border-radius: 0.5em;
+    border-width: thin;
+}
+.divtable{
+    display: flex;
+    justify-content: center;
+}
+.table{
+    align-self: center;
+    text-align: center;
+    background-color: #c2def9;
+}
+td{
+    padding: 0.4em;
+}
+.divform{
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+}
+.formulario{
+    padding: 0.5em;
+    background-color: #c2def9;   
+    width: 100%;
+    border-radius: 0.5em;
+}
+.formulario p{
+
+}
+.formulario button{
+    text-align: center;
+}
+.formulario input{
+    border-radius: 0.5em;
+    border-width: thin;
+    opacity: 80%;
+}

@@ -16,6 +16,7 @@ export class TrabajadoresComponent implements OnInit {
   dni: String | undefined;
   mesesTrabajados: number | undefined;
   diasVacaciones: number | undefined;
+  restDiasVacaciones: number | undefined;
 
 
   today = new Date();
@@ -86,9 +87,13 @@ let d2 = new Date(d2t);
      surname: surname,
      dni: dni,
      fechaContrato: fechaContrato, 
-     mesesTrabajados:mesesTrabajados
+     mesesTrabajados: mesesTrabajados
    }
   this.trabajadores.push(trabajador);
+  for(let i=0; i<this.trabajadores.length; i++){
+    this.trabajadores[i].mesesTrabajados = this.updateMeses(this.trabajadores[i]);
+    this.trabajadores[i].diasVacaciones = this.updateDiasVacaciones(this.trabajadores[i]);
+  }
  }
  setData(trabajador: any){
    this.id=trabajador.id;
@@ -96,16 +101,20 @@ let d2 = new Date(d2t);
    this.surname=trabajador.surname;
    this.dni=trabajador.dni;
    this.fechaContrato=trabajador.fechaContrato;
+   this.diasVacaciones=trabajador.diasVacaciones;
    this.add=false;
    this.selected=true;
  }
- modTrabajador(id: any, name: any, surname: any, dni: any, fechaContrato: any){
+ modTrabajador(id: any, name: any, surname: any, dni: any, fechaContrato: any, restDiasVacaciones:any){
   for(let i=0; i<this.trabajadores.length; i++){
     if(id == this.trabajadores[i].id){
       this.trabajadores[i].name= name;
       this.trabajadores[i].surname= surname;
       this.trabajadores[i].dni= dni;
       this.trabajadores[i].fechaContrato= fechaContrato;
+      if(this.diasVacaciones){
+      this.trabajadores[i].diasVacaciones= this.diasVacaciones-restDiasVacaciones;
+      }
     }
   }
   this.add=true;
