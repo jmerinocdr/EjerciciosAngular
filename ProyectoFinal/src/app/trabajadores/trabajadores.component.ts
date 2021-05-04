@@ -56,7 +56,7 @@ export class TrabajadoresComponent implements OnInit {
   return this.monthDiff(trabajador.fechaContrato, this.today);
  }
  updateDiasVacaciones(trabajador:any){
-  return Math.floor(this.monthDiff(trabajador.fechaContrato, this.today)*2.5);
+  return Math.ceil(this.monthDiff(trabajador.fechaContrato, this.today)*2.5);
  }
  monthDiff(d1t: Date, d2t: Date) {
 let d1 = new Date(d1t);

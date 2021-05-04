@@ -52,3 +52,7 @@ td{
     border-width: thin;
     opacity: 80%;
 }
+.alert{
+    padding: 1em;
+    background-color: red;
+}
