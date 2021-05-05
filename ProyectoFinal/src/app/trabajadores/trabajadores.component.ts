@@ -102,6 +102,7 @@ let d2 = new Date(d2t);
    this.dni=trabajador.dni;
    this.fechaContrato=trabajador.fechaContrato;
    this.diasVacaciones=trabajador.diasVacaciones;
+   this.restDiasVacaciones=0;
    this.add=false;
    this.selected=true;
  }
