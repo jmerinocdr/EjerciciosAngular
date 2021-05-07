@@ -141,7 +141,8 @@ startWith(nombre: String, search: String){
   return this.find;
 }
 
-takeMonths(trabajador: String){
-
+clean(){
+  this.add=true;
+  this.selected=false;
 }
 }

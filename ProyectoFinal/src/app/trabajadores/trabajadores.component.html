@@ -6,7 +6,7 @@
     <div *ngIf="search==null||search==none">
     <table class="table" border="1" >
         <tr>
-            <td>Nombre</td><td>Apellido</td><td>DNI</td><td>Fecha de contrato</td><td>Días vacaciones</td>
+            <td>Nombre</td><td>Apellido</td><td>DNI</td><td>Fecha de contrato</td><td>Días vacaciones</td><td colspan="2"><button (click)="clean()">Limpiar</button></td>
         </tr>
         <tr *ngFor="let trabajador of trabajadores">
             <td>{{trabajador.name}}</td>
@@ -48,10 +48,10 @@
     <p *ngIf="selected">Días disponibles: {{diasVacaciones}}</p>
     <p *ngIf="selected">Obtener días vacaciones <input type="number" name="restDiasVacaciones" [(ngModel)]="restDiasVacaciones" value="{{restDiasVacaciones}}"></p>
     <input type="hidden" name="mesesTrabajados" value="0">
-    <button *ngIf="add" (click)="addTrabajador(id, name, surname, dni, fechaContrato, mesesTrabajados)">Anadir Trabajador</button>
-    <div *ngIf="restDiasVacaciones!=undefined && diasVacaciones!=undefined">
+    <button class="btn" *ngIf="add" (click)="addTrabajador(id, name, surname, dni, fechaContrato, mesesTrabajados)">Anadir Trabajador</button>
+    <div *ngIf="restDiasVacaciones!=null && diasVacaciones!=null">
         <p *ngIf="selected && restDiasVacaciones >= diasVacaciones && restDiasVacaciones != diasVacaciones" class="alert">No se puede hacer esta modificación</p>
-        <button *ngIf="selected && restDiasVacaciones <= diasVacaciones && restDiasVacaciones == diasVacaciones" (click)="modTrabajador(id, name, surname, dni, fechaContrato, restDiasVacaciones)">Modificar Trabajador</button>
+        <button class="btn" *ngIf="selected && restDiasVacaciones <= diasVacaciones || restDiasVacaciones == diasVacaciones" (click)="modTrabajador(id, name, surname, dni, fechaContrato, restDiasVacaciones)">Modificar Trabajador</button>
     </div>
 </form>
     </div>

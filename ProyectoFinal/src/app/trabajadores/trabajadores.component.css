@@ -56,3 +56,29 @@ td{
     padding: 1em;
     background-color: red;
 }
+.btn {
+    background: #63c1ff;
+    background-image: -webkit-linear-gradient(top, #63c1ff, #009dff);
+    background-image: -moz-linear-gradient(top, #63c1ff, #009dff);
+    background-image: -ms-linear-gradient(top, #63c1ff, #009dff);
+    background-image: -o-linear-gradient(top, #63c1ff, #009dff);
+    background-image: linear-gradient(to bottom, #63c1ff, #009dff);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 3px 5px 3px 5px;
+    text-decoration: none;
+  }
+  
+  .btn:hover {
+    background: #82cfff;
+    background-image: -webkit-linear-gradient(top, #82cfff, #33adff);
+    background-image: -moz-linear-gradient(top, #82cfff, #33adff);
+    background-image: -ms-linear-gradient(top, #82cfff, #33adff);
+    background-image: -o-linear-gradient(top, #82cfff, #33adff);
+    background-image: linear-gradient(to bottom, #82cfff, #33adff);
+    text-decoration: none;
+  }
